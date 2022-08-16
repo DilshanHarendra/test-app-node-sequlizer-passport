@@ -3,7 +3,6 @@
     "saveUninitialized":false,
     "cookie": {
     "maxAge": 60000,
-        "path":"/cookie",
-        "secure": true
+        "secure": false
     }
 }
