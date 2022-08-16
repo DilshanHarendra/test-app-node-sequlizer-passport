@@ -33,8 +33,9 @@ const Foods = db.define("foods", {
 
 });
 
-Foods.hasOne(Ratings);
-Ratings.belongsTo(Foods)
+
+Foods.hasOne(Ratings,{foreignKey: 'dishId', });
+
 
 Foods.sync({ alter: true }).then(()=>{
     console.log(`Foods table created`)
