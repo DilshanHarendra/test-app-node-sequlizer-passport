@@ -1,5 +1,6 @@
 const sequelize = require('sequelize')
 const db =  require('../connections/databaseConnection')
+const Food =  require('./foods')
 
 const Ratings = db.define("ratings", {
     id:{
@@ -16,6 +17,10 @@ const Ratings = db.define("ratings", {
     isPopular:{
         type:sequelize.BOOLEAN,
     },
+
+    dishId:{
+        type: sequelize.INTEGER,
+    }
 });
 
 Ratings.sync({ alter: true }).then(()=>{
