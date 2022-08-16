@@ -1,11 +1,13 @@
 const dotenv = require('dotenv');
-dotenv.config()
-const env = process.env.NODE_ENV || 'dev';
 const express = require('express')
-const app = express()
 const session = require('express-session')
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
+
+
+dotenv.config()
+const app = express()
+
 //config
 const db= require('./connections/databaseConnection')
 const sessionConfig = require('./config/sessionConfig.json')
@@ -26,17 +28,14 @@ const path = require("path");
 
 app.set('view engine', 'ejs')
 app.use(cookieParser());
-app.use(session({
-    "secret": process.env.SESSION_SECRET||'secretKey',
-    ...sessionConfig,
-}))
+app.use(session({"secret": process.env.SESSION_SECRET||'secretKey', ...sessionConfig}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-// Test DB
+// connect DB
 db.authenticate()
     .then(() => console.log('Database connected...'))
     .catch(err => console.error( err))

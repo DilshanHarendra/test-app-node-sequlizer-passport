@@ -13,7 +13,6 @@ router.get('/', (req,res)=>{
                     ...dish
                 },{include: [{model: Ratings, as: 'rating',}]})
             })
-
         })
         res.status(200).send(data)
      }catch (err) {

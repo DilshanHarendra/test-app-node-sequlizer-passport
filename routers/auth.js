@@ -3,8 +3,6 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oidc');
 var router = express.Router();
 var Users = require('../models/users');
-const sequelize = require("sequelize");
-
 
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
@@ -35,9 +33,6 @@ passport.use(new GoogleStrategy({
     }catch (e) {
         return cb({message:e});
     }
-
-
-
     return cb(null, userData);
 }));
 
@@ -48,10 +43,6 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(user, cb) {
     cb(null, user);
 });
-
-
-
-
 
 router.get('/', (req, res)=> {
     res.render('login');
