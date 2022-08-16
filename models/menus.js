@@ -19,7 +19,7 @@ const Menus = db.define("menus", {
 
 });
 
-Menus.sync().then(()=>{
+Menus.sync({ alter: true }).then(()=>{
     console.log(`Menus table created`)
 })
 module.exports=Menus
