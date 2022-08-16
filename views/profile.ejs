@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+</head>
+<body>
+<h1>Hi <%= user.displayName %></h1>
+
+<h2>Profile</h2>
+<ul>
+    <li>Provider ID : <%= user.providerId||'' %></li>
+    <li>First name : <%= user.firstName||'' %></li>
+    <li>Last Name : <%= user.lastName||'' %></li>
+    <li>Email : <%= user.email||'' %></li>
+    <li>Provider : <%= user.authProvider||'' %></li>
+</ul>
+
+<hr>
+<br><br>
+<h2>APIs</h2>
+
+<ul>
+    <li>Find Menus <a  href="/menus">Menu</a></li>
+    <li>Find Foods <a  href="/foods">Foods</a></li>
+</ul>
+
+
+<form method="post" action="/auth/logout">
+    <button style="margin-top: 50px">Logout</button>
+</form>
+</body>
+</html>
