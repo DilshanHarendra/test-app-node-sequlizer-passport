@@ -1,8 +1,8 @@
 const authMiddleware = (req,res,next)=>{
-    if (!req.session?.user){
+    if (req.user){
         next()
     }else {
-        res.send({ message:'unauthorized'}).status(401)
+        res.redirect("/auth")
     }
 
 }
